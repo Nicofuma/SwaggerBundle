@@ -5,9 +5,9 @@ namespace SwaggerValidationBundle\EventListener;
 use SwaggerValidationBundle\Exception\ConstraintViolationException;
 use SwaggerValidationBundle\Exception\NoValidatorException;
 use SwaggerValidationBundle\Validator\ValidatorMap;
-use Symfony\Component\HttpKernel\KernelEvents;
-use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Symfony\Component\HttpKernel\Event\GetResponseEvent;
+use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\Validator\ConstraintViolation;
 use Symfony\Component\Validator\ConstraintViolationList;
 
