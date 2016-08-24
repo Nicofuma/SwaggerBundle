@@ -1,0 +1,278 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Socle Technique",
+        "description": "Interface de communication avec l'API du socle technique\n#### PAGINATION\n```json\n{\n    ...\n    \"paging\": {\n        \"next\": \"/campaigns?start_index=48&count=10\",\n        \"prev\": \"/campaigns?start_index=27&count=10\",\n        \"total_results\": 90\n    }\n}\n```\n",
+        "version": "1.0.0"
+    },
+    "host": "",
+    "schemes": [
+        "https",
+        "http"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "securityDefinitions": {
+        "basicAuth": {
+            "type": "basic",
+            "description": "HTTP Basic Authentication. Works over `HTTPS`"
+        }
+    },
+    "tags": [
+        {
+            "name": "Example",
+            "description": "Example operations"
+        }
+    ],
+    "definitions": {
+        "LetterStatusList": {
+            "type": "string",
+            "description": "Letter status",
+            "enum": [
+                "DRAFT",
+                "SENT",
+                "RECEIVED"
+            ]
+        },
+        "Paging": {
+            "type": "object",
+            "properties": {
+                "prev": {
+                    "type": "string",
+                    "description": "Path to previous page"
+                },
+                "next": {
+                    "type": "string",
+                    "description": "Path to next page"
+                },
+                "total_results": {
+                    "type": "integer",
+                    "description": "Total number of elements"
+                }
+            },
+            "required": [
+                "total_results"
+            ]
+        },
+        "People": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "People's ID"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "People's name"
+                },
+                "address": {
+                    "type": "string",
+                    "description": "People's address"
+                }
+            },
+            "required": [
+                "id",
+                "name",
+                "address"
+            ]
+        },
+        "LetterList": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/LetterShort"
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "string",
+                            "format": "uuid",
+                            "description": "Letter's ID"
+                        }
+                    }
+                }
+            ],
+            "required": [
+                "id",
+                "subject",
+                "sender",
+                "recipient",
+                "status"
+            ]
+        },
+        "LetterFull": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/LetterShort"
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "body": {
+                            "type": "string",
+                            "description": "Letter's body"
+                        }
+                    },
+                    "required": [
+                        "body"
+                    ]
+                }
+            ]
+        },
+        "LetterShort": {
+            "allOf": [
+                {
+                    "type": "object",
+                    "properties": {
+                        "subject": {
+                            "type": "string",
+                            "description": "Letter's subject"
+                        },
+                        "sender": {
+                            "$ref": "#/definitions/People"
+                        },
+                        "recipient": {
+                            "$ref": "#/definitions/People"
+                        },
+                        "status": {
+                            "$ref": "#/definitions/LetterStatusList"
+                        }
+                    },
+                    "required": [
+                        "id",
+                        "subject",
+                        "sender",
+                        "recipient",
+                        "status"
+                    ]
+                }
+            ]
+        },
+        "LetterResponse": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/LetterList"
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "body": {
+                            "type": "string",
+                            "description": "Letter's body"
+                        }
+                    },
+                    "required": [
+                        "body"
+                    ]
+                }
+            ]
+        }
+    },
+    "parameters": {
+        "letter_id": {
+            "name": "letter_i",
+            "in": "path",
+            "description": "Letter's ID",
+            "type": "string",
+            "format": "uuid",
+            "required": true
+        },
+        "count": {
+            "name": "count",
+            "in": "query",
+            "description": "Number of elements to send",
+            "type": "number",
+            "minimum": 1,
+            "maximum": 1000,
+            "default": 10
+        },
+        "start_index": {
+            "name": "start_index",
+            "in": "query",
+            "description": "Index of the first element to return",
+            "type": "number",
+            "minimum": 0,
+            "default": 0
+        }
+    },
+    "paths": {
+        "/api/v1/users": {
+            "get": {
+                "operationId": "listLetter",
+                "tags": [
+                    "Example"
+                ],
+                "description": "List the letters",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/count"
+                    },
+                    {
+                        "$ref": "#/parameters/start_index"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "$ref": "#/definitions/LetterList"
+                                },
+                                "paging": {
+                                    "$ref": "#/definitions/Paging"
+                                }
+                            },
+                            "required": [
+                                "data",
+                                "paging"
+                            ]
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                },
+                "security": [
+                    {
+                        "basicAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "operationId": "createLetter",
+                "tags": [
+                    "Example"
+                ],
+                "description": "Creates a new letter",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Letter to create",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/LetterFull"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/LetterResponse"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "basicAuth": []
+                    }
+                ]
+            }
+        }
+    }
+}

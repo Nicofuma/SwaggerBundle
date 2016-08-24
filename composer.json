@@ -1,0 +1,38 @@
+{
+  "name": "nicofuma/swagger-validation-bundle",
+  "description": "A bundle integrating swagger to validate Requests and Responses",
+  "license": "MIT",
+  "type": "symfony-bundle",
+  "authors": [
+    {
+      "name": "Tristan Darricau",
+      "email": "contact@nicofuma.fr"
+    }
+  ],
+  "require": {
+    "php": ">=5.5.0",
+    "symfony/framework-bundle": "^2.3|^3.0",
+    "symfony/dependency-injection": "^2.3|^3.0",
+    "symfony/event-dispatcher": "^2.3|^3.0",
+    "symfony/http-foundation": "^2.3|^3.0",
+    "symfony/validator": "^2.3|^3.0",
+    "fr3d/swagger-assertions": "dev-master"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^5.2",
+    "symfony/phpunit-bridge": "^2.7|^3.0",
+    "friendsofsymfony/rest-bundle": "^1.7"
+  },
+  "autoload": {
+    "psr-4": { "SwaggerValidationBundle\\": "src" }
+  },
+  "autoload-dev": {
+    "psr-4": { "Tests\\SwaggerValidationBundle\\": "tests" }
+  },
+  "minimum-stability": "dev",
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0.x-dev"
+    }
+  }
+}

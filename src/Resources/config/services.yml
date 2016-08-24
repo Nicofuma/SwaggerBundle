@@ -1,0 +1,39 @@
+services:
+    swagger_validation.validator_map:
+        class: SwaggerValidationBundle\Validator\ValidatorMap
+        arguments:
+          - '@service_container'
+          - [] # Validator's array map
+
+    swagger_validation.validator:
+        class: SwaggerValidationBundle\Validator\Validator
+        abstract: true
+        arguments:
+          - ~ # SchemaManager
+          - ~ # Strict
+
+    swagger_validation.schema_manager_factory:
+        class: SwaggerValidationBundle\Swagger\SchemaManagerFactory
+        arguments:
+          - '@kernel'
+
+    swagger_validation.schema_manager:
+        class: FR3D\SwaggerAssertions\SchemaManager
+        abstract: true
+        factory: ['@swagger_validation.schema_manager_factory', createFromFile]
+        arguments:
+          - ~ # SwaggerFile
+
+    swagger_validation.validator_listener:
+        class: SwaggerValidationBundle\EventListener\ValidatorListener
+        arguments:
+          - '@swagger_validation.validator_map'
+        tags:
+          - { name: kernel.event_subscriber }
+
+    bootstrap.fos_rest.request.param_fetcher:
+        class: SwaggerValidationBundle\FosRest\ParamFetcher
+        arguments:
+          - ~ # Inner service
+          - '@swagger_validation.validator_map'
+          - '@request_stack'
