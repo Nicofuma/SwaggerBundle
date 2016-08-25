@@ -93,6 +93,13 @@ swagger_validation:
 
 ```
 
+Behat integration
+-----------------
+
+Add the following context in your behat.yml file
+```
+        - SwaggerValidationBundle\Tests\Behat\Context\SwaggerContext: {map: '@swagger_validation.validator_map'}
+```
 
 Contributing
 ------------
