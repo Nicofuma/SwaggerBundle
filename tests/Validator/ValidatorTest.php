@@ -1,13 +1,13 @@
 <?php
 
-namespace tests\SwaggerValidationBundle\Validator;
+namespace tests\Nicofuma\SwaggerBundle\Validator;
 
 use FR3D\SwaggerAssertions\SchemaManager;
-use SwaggerValidationBundle\Validator\Validator;
-use Tests\SwaggerValidationBundle\SwaggerTestCase;
+use Nicofuma\SwaggerBundle\Validator\Validator;
+use tests\Nicofuma\SwaggerBundle\SwaggerTestCase;
 
 /**
- * @covers \SwaggerValidationBundle\Validator\Validator
+ * @covers \Nicofuma\SwaggerBundle\Validator\Validator
  */
 class ValidatorTest extends SwaggerTestCase
 {

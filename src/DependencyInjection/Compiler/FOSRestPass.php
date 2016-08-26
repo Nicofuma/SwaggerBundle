@@ -1,6 +1,6 @@
 <?php
 
-namespace SwaggerValidationBundle\DependencyInjection\Compiler;
+namespace Nicofuma\SwaggerBundle\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;

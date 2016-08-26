@@ -1,5 +1,5 @@
 {
-  "name": "nicofuma/swagger-validation-bundle",
+  "name": "nicofuma/swagger-bundle",
   "description": "A bundle integrating swagger to validate Requests and Responses",
   "license": "MIT",
   "type": "symfony-bundle",
@@ -24,12 +24,11 @@
     "friendsofsymfony/rest-bundle": "^1.7"
   },
   "autoload": {
-    "psr-4": { "SwaggerValidationBundle\\": "src" }
+    "psr-4": { "Nicofuma\\SwaggerBundle\\": "src" }
   },
   "autoload-dev": {
-    "psr-4": { "Tests\\SwaggerValidationBundle\\": "tests" }
+    "psr-4": { "tests\\Nicofuma\\SwaggerBundle\\": "tests" }
   },
-  "minimum-stability": "dev",
   "extra": {
     "branch-alias": {
       "dev-master": "1.0.x-dev"

@@ -1,11 +1,11 @@
 <?php
 
-namespace SwaggerValidationBundle\Tests\Behat\Context;
+namespace Nicofuma\SwaggerBundle\Tests\Behat\Context;
 
 use BootstrapBundle\Tests\Behat\Context\Traits\ClientContextTrait;
 use FR3D\SwaggerAssertions\PhpUnit\SymfonyAssertsTrait;
 use Sanpi\Behatch\Context\BaseContext;
-use SwaggerValidationBundle\Validator\ValidatorMap;
+use Nicofuma\SwaggerBundle\Validator\ValidatorMap;
 
 class SwaggerContext extends BaseContext
 {

@@ -1,20 +1,20 @@
 <?php
 
-namespace tests\SwaggerValidationBundle\FosRest;
+namespace tests\Nicofuma\SwaggerBundle\FosRest;
 
 use FOS\RestBundle\Request\ParamFetcherInterface;
 use FR3D\SwaggerAssertions\SchemaManager;
 use Prophecy\Argument;
-use SwaggerValidationBundle\Exception\NoValidatorException;
-use SwaggerValidationBundle\FosRest\ParamFetcher;
-use SwaggerValidationBundle\Validator\Validator;
-use SwaggerValidationBundle\Validator\ValidatorMap;
+use Nicofuma\SwaggerBundle\Exception\NoValidatorException;
+use Nicofuma\SwaggerBundle\FosRest\ParamFetcher;
+use Nicofuma\SwaggerBundle\Validator\Validator;
+use Nicofuma\SwaggerBundle\Validator\ValidatorMap;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
-use Tests\SwaggerValidationBundle\SwaggerTestCase;
+use tests\Nicofuma\SwaggerBundle\SwaggerTestCase;
 
 /**
- * @covers \SwaggerValidationBundle\FosRest\ParamFetcher
+ * @covers \Nicofuma\SwaggerBundle\FosRest\ParamFetcher
  */
 class ParamFetcherTest extends SwaggerTestCase
 {

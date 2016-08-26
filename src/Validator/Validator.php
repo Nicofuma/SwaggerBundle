@@ -1,6 +1,6 @@
 <?php
 
-namespace SwaggerValidationBundle\Validator;
+namespace Nicofuma\SwaggerBundle\Validator;
 
 use FR3D\SwaggerAssertions\PhpUnit\SymfonyAssertsTrait;
 use FR3D\SwaggerAssertions\SchemaManager;

@@ -1,6 +1,6 @@
 <?php
 
-namespace SwaggerValidationBundle\Swagger;
+namespace Nicofuma\SwaggerBundle\Swagger;
 
 use FR3D\SwaggerAssertions\SchemaManager;
 use Symfony\Component\HttpKernel\KernelInterface;

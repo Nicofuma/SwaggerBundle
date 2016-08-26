@@ -1,6 +1,6 @@
 <?php
 
-namespace tests\SwaggerValidationBundle;
+namespace tests\Nicofuma\SwaggerBundle;
 
 use Symfony\Component\HttpFoundation\HeaderBag;
 use Symfony\Component\HttpFoundation\Request;

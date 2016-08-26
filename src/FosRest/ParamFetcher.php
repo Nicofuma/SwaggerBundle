@@ -1,11 +1,11 @@
 <?php
 
-namespace SwaggerValidationBundle\FosRest;
+namespace Nicofuma\SwaggerBundle\FosRest;
 
 use FOS\RestBundle\Request\ParamFetcherInterface;
-use SwaggerValidationBundle\Exception\NoValidatorException;
-use SwaggerValidationBundle\Validator\Validator;
-use SwaggerValidationBundle\Validator\ValidatorMap;
+use Nicofuma\SwaggerBundle\Exception\NoValidatorException;
+use Nicofuma\SwaggerBundle\Validator\Validator;
+use Nicofuma\SwaggerBundle\Validator\ValidatorMap;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 class ParamFetcher implements ParamFetcherInterface

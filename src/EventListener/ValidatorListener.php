@@ -1,10 +1,10 @@
 <?php
 
-namespace SwaggerValidationBundle\EventListener;
+namespace Nicofuma\SwaggerBundle\EventListener;
 
-use SwaggerValidationBundle\Exception\ConstraintViolationException;
-use SwaggerValidationBundle\Exception\NoValidatorException;
-use SwaggerValidationBundle\Validator\ValidatorMap;
+use Nicofuma\SwaggerBundle\Exception\ConstraintViolationException;
+use Nicofuma\SwaggerBundle\Exception\NoValidatorException;
+use Nicofuma\SwaggerBundle\Validator\ValidatorMap;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
@@ -48,7 +48,7 @@ class ValidatorListener implements EventSubscriberInterface
                     $message,
                     [],
                     null,
-                    trim($path, '[]'),
+                    $path,
                     null
                 ));
             }

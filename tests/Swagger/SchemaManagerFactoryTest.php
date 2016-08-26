@@ -1,13 +1,13 @@
 <?php
 
-namespace tests\SwaggerValidationBundle\Swagger;
+namespace tests\Nicofuma\SwaggerBundle\Swagger;
 
 use FR3D\SwaggerAssertions\SchemaManager;
-use SwaggerValidationBundle\Swagger\SchemaManagerFactory;
+use Nicofuma\SwaggerBundle\Swagger\SchemaManagerFactory;
 use Symfony\Component\HttpKernel\KernelInterface;
 
 /**
- * @covers \SwaggerValidationBundle\Swagger\SchemaManagerFactory
+ * @covers \Nicofuma\SwaggerBundle\Swagger\SchemaManagerFactory
  */
 class SchemaManagerFactoryTest extends \PHPUnit_Framework_TestCase
 {

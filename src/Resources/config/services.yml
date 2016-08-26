@@ -1,39 +1,39 @@
 services:
-    swagger_validation.validator_map:
-        class: SwaggerValidationBundle\Validator\ValidatorMap
+    swagger.validator_map:
+        class: Nicofuma\SwaggerBundle\Validator\ValidatorMap
         arguments:
           - '@service_container'
           - [] # Validator's array map
 
-    swagger_validation.validator:
-        class: SwaggerValidationBundle\Validator\Validator
+    swagger.validator:
+        class: Nicofuma\SwaggerBundle\Validator\Validator
         abstract: true
         arguments:
           - ~ # SchemaManager
           - ~ # Strict
 
-    swagger_validation.schema_manager_factory:
-        class: SwaggerValidationBundle\Swagger\SchemaManagerFactory
+    swagger.schema_manager_factory:
+        class: Nicofuma\SwaggerBundle\Swagger\SchemaManagerFactory
         arguments:
           - '@kernel'
 
-    swagger_validation.schema_manager:
+    swagger.schema_manager:
         class: FR3D\SwaggerAssertions\SchemaManager
         abstract: true
-        factory: ['@swagger_validation.schema_manager_factory', createFromFile]
+        factory: ['@swagger.schema_manager_factory', createFromFile]
         arguments:
           - ~ # SwaggerFile
 
-    swagger_validation.validator_listener:
-        class: SwaggerValidationBundle\EventListener\ValidatorListener
+    swagger.validator_listener:
+        class: Nicofuma\SwaggerBundle\EventListener\ValidatorListener
         arguments:
-          - '@swagger_validation.validator_map'
+          - '@swagger.validator_map'
         tags:
           - { name: kernel.event_subscriber }
 
     bootstrap.fos_rest.request.param_fetcher:
-        class: SwaggerValidationBundle\FosRest\ParamFetcher
+        class: Nicofuma\SwaggerBundle\FosRest\ParamFetcher
         arguments:
           - ~ # Inner service
-          - '@swagger_validation.validator_map'
+          - '@swagger.validator_map'
           - '@request_stack'

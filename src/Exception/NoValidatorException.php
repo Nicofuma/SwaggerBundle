@@ -1,6 +1,6 @@
 <?php
 
-namespace SwaggerValidationBundle\Exception;
+namespace Nicofuma\SwaggerBundle\Exception;
 
 class NoValidatorException extends \RuntimeException
 {

@@ -1,18 +1,18 @@
 <?php
 
-namespace tests\SwaggerValidationBundle\EventListener;
+namespace tests\Nicofuma\SwaggerBundle\EventListener;
 
-use SwaggerValidationBundle\EventListener\ValidatorListener;
-use SwaggerValidationBundle\Exception\ConstraintViolationException;
-use SwaggerValidationBundle\Exception\NoValidatorException;
-use SwaggerValidationBundle\Validator\Validator;
-use SwaggerValidationBundle\Validator\ValidatorMap;
+use Nicofuma\SwaggerBundle\EventListener\ValidatorListener;
+use Nicofuma\SwaggerBundle\Exception\ConstraintViolationException;
+use Nicofuma\SwaggerBundle\Exception\NoValidatorException;
+use Nicofuma\SwaggerBundle\Validator\Validator;
+use Nicofuma\SwaggerBundle\Validator\ValidatorMap;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\KernelInterface;
-use Tests\SwaggerValidationBundle\SwaggerTestCase;
+use tests\Nicofuma\SwaggerBundle\SwaggerTestCase;
 
 /**
- * @covers \SwaggerValidationBundle\EventListener\ValidatorListener
+ * @covers \Nicofuma\SwaggerBundle\EventListener\ValidatorListener
  */
 class ValidatorListenerTest extends SwaggerTestCase
 {

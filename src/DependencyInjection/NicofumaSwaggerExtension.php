@@ -1,6 +1,6 @@
 <?php
 
-namespace SwaggerValidationBundle\DependencyInjection;
+namespace Nicofuma\SwaggerBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -10,7 +10,7 @@ use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpFoundation\RequestMatcher;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
-class SwaggerValidationExtension extends Extension
+class NicofumaSwaggerExtension extends Extension
 {
     private $requestMatchers = [];
 
@@ -24,7 +24,7 @@ class SwaggerValidationExtension extends Extension
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
 
-        $mapDefinition = $container->getDefinition('swagger_validation.validator_map');
+        $mapDefinition = $container->getDefinition('swagger.validator_map');
         $map = [];
         foreach ($config['definitions'] as $key => $definition) {
             $matcher = $this->createRequestMatcher(
@@ -35,12 +35,12 @@ class SwaggerValidationExtension extends Extension
                 $definition['pattern']['ips']
             );
 
-            $schemaManagerId = 'swagger_validation.schema_manager.'.$key;
-            $schemaManager = $container->setDefinition($schemaManagerId, new DefinitionDecorator('swagger_validation.schema_manager'));
+            $schemaManagerId = 'swagger.schema_manager.'.$key;
+            $schemaManager = $container->setDefinition($schemaManagerId, new DefinitionDecorator('swagger.schema_manager'));
             $schemaManager->replaceArgument(0, $definition['swagger_file']);
 
-            $validatorId = 'swagger_validation.validator.'.$key;
-            $validator = $container->setDefinition($validatorId, new DefinitionDecorator('swagger_validation.validator'));
+            $validatorId = 'swagger.validator.'.$key;
+            $validator = $container->setDefinition($validatorId, new DefinitionDecorator('swagger.validator'));
             $validator->replaceArgument(0, new Reference($schemaManagerId));
             $validator->replaceArgument(1, $definition['strict']);
 
@@ -56,7 +56,7 @@ class SwaggerValidationExtension extends Extension
         }
 
         $serialized = serialize([$path, $host, $methods, $ip, $attributes]);
-        $id = 'swagger_validation.request_matcher.'.md5($serialized).sha1($serialized);
+        $id = 'swagger.request_matcher.'.md5($serialized).sha1($serialized);
 
         if (isset($this->requestMatchers[$id])) {
             return $this->requestMatchers[$id];

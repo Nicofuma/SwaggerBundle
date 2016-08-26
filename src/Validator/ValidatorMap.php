@@ -1,8 +1,8 @@
 <?php
 
-namespace SwaggerValidationBundle\Validator;
+namespace Nicofuma\SwaggerBundle\Validator;
 
-use SwaggerValidationBundle\Exception\NoValidatorException;
+use Nicofuma\SwaggerBundle\Exception\NoValidatorException;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 

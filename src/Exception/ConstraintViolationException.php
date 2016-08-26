@@ -1,6 +1,6 @@
 <?php
 
-namespace SwaggerValidationBundle\Exception;
+namespace Nicofuma\SwaggerBundle\Exception;
 
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 

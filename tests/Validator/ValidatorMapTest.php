@@ -1,15 +1,15 @@
 <?php
 
-namespace tests\SwaggerValidationBundle\Validator;
+namespace tests\Nicofuma\SwaggerBundle\Validator;
 
-use SwaggerValidationBundle\Exception\NoValidatorException;
-use SwaggerValidationBundle\Validator\ValidatorMap;
+use Nicofuma\SwaggerBundle\Exception\NoValidatorException;
+use Nicofuma\SwaggerBundle\Validator\ValidatorMap;
 use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\HttpFoundation\RequestMatcher;
-use Tests\SwaggerValidationBundle\SwaggerTestCase;
+use tests\Nicofuma\SwaggerBundle\SwaggerTestCase;
 
 /**
- * @covers \SwaggerValidationBundle\Validator\ValidatorMap
+ * @covers \Nicofuma\SwaggerBundle\Validator\ValidatorMap
  */
 class ValidatorMapTest extends SwaggerTestCase
 {
