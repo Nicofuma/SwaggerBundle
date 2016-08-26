@@ -4,11 +4,11 @@ namespace tests\Nicofuma\SwaggerBundle\FosRest;
 
 use FOS\RestBundle\Request\ParamFetcherInterface;
 use FR3D\SwaggerAssertions\SchemaManager;
-use Prophecy\Argument;
 use Nicofuma\SwaggerBundle\Exception\NoValidatorException;
 use Nicofuma\SwaggerBundle\FosRest\ParamFetcher;
 use Nicofuma\SwaggerBundle\Validator\Validator;
 use Nicofuma\SwaggerBundle\Validator\ValidatorMap;
+use Prophecy\Argument;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use tests\Nicofuma\SwaggerBundle\SwaggerTestCase;
