@@ -28,6 +28,11 @@ class ValidatorListener implements EventSubscriberInterface
      */
     public function onKernelRequest(GetResponseEvent $event)
     {
+        // Workaround for https://github.com/symfony/symfony/issues/19749
+        if (!$event->isMasterRequest()) {
+            return;
+        }
+
         try {
             $request = $event->getRequest();
             $validator = $this->map->getValidator($request);

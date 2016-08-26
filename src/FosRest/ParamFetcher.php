@@ -41,6 +41,14 @@ class ParamFetcher implements ParamFetcherInterface
     {
         $request = $this->requestStack->getCurrentRequest();
 
+        // Workaround for https://github.com/symfony/symfony/issues/19749
+        if ($this->requestStack->getMasterRequest() !== $request) {
+            $this->usingSwagger = false;
+            $this->decorated->setController($controller);
+
+            return;
+        }
+
         try {
             $this->currentValidator = $this->validatorMap->getValidator($request);
             $this->currentSchema = null;
