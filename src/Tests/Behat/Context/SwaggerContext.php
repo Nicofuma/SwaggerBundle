@@ -4,8 +4,8 @@ namespace Nicofuma\SwaggerBundle\Tests\Behat\Context;
 
 use BootstrapBundle\Tests\Behat\Context\Traits\ClientContextTrait;
 use FR3D\SwaggerAssertions\PhpUnit\SymfonyAssertsTrait;
-use Sanpi\Behatch\Context\BaseContext;
 use Nicofuma\SwaggerBundle\Validator\ValidatorMap;
+use Sanpi\Behatch\Context\BaseContext;
 
 class SwaggerContext extends BaseContext
 {
