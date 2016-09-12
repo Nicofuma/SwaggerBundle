@@ -4,6 +4,7 @@ namespace Nicofuma\SwaggerBundle\Validator;
 
 use FR3D\SwaggerAssertions\PhpUnit\SymfonyAssertsTrait;
 use FR3D\SwaggerAssertions\SchemaManager;
+use JsonSchema\Constraints\Factory;
 use Symfony\Component\HttpFoundation\Request;
 
 class Validator
@@ -16,10 +17,14 @@ class Validator
     /** @var bool */
     private $strict;
 
-    public function __construct(SchemaManager $schemaManager, $strict)
+    /** @var Factory */
+    private $constraintsFactory;
+
+    public function __construct(Factory $constraintsFactory, SchemaManager $schemaManager, $strict)
     {
         $this->schemaManager = $schemaManager;
         $this->strict = $strict;
+        $this->constraintsFactory = $constraintsFactory;
     }
 
     public function validate(Request $request)
@@ -39,5 +44,13 @@ class Validator
     public function getSchemaManager()
     {
         return $this->schemaManager;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function getValidator()
+    {
+        return new \JsonSchema\Validator($this->constraintsFactory);
     }
 }

@@ -9,6 +9,7 @@ services:
         class: Nicofuma\SwaggerBundle\Validator\Validator
         abstract: true
         arguments:
+          - '@swagger.json_schema.constraints.factory'
           - ~ # SchemaManager
           - ~ # Strict
 
@@ -31,9 +32,26 @@ services:
         tags:
           - { name: kernel.event_subscriber }
 
-    bootstrap.fos_rest.request.param_fetcher:
+    swagger.fos_rest.request.param_fetcher:
         class: Nicofuma\SwaggerBundle\FosRest\ParamFetcher
         arguments:
           - ~ # Inner service
           - '@swagger.validator_map'
           - '@request_stack'
+
+    swagger.json_schema.constraints.factory:
+        class: Nicofuma\SwaggerBundle\JsonSchema\Constraints\Factory
+
+    # Override the JsonSchema's format constraint
+    swagger.json_schema.constraints.format:
+        class: Nicofuma\SwaggerBundle\JsonSchema\Constraints\FormatConstraint
+        tags:
+          - { name: swagger.json_schema.constraint, constraint: format }
+
+    # Add a validator for the UUID format
+    swagger.json_schema.format_validator.uuid:
+        class: Nicofuma\SwaggerBundle\JsonSchema\Constraints\Format\UUIDValidator
+        arguments:
+          - '@?validator'
+        tags:
+          - { name: swagger.format_validator, format: uuid }
