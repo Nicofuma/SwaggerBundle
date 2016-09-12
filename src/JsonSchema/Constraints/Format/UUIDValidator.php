@@ -22,7 +22,7 @@ class UUIDValidator implements FormatValidatorInterface
      */
     public function validate($value)
     {
-        if ($this->validator !== null ) {
+        if ($this->validator !== null) {
             $errorList = $this->validator->validate($value, [new Uuid()]);
 
             if (count($errorList) > 0) {

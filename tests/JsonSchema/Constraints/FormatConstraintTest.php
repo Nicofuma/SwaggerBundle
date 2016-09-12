@@ -41,7 +41,7 @@ class FormatConstraintTest extends \PHPUnit_Framework_TestCase
     public function testCheckNewFormat()
     {
         $formatValidator = $this->prophesize(FormatValidatorInterface::class);
-        $formatValidator->validate('foo')->will(function() {
+        $formatValidator->validate('foo')->will(function () {
             throw new FormatConstraintException(['Invalid foo']);
         });
 

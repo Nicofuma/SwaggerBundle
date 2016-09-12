@@ -36,9 +36,9 @@ class FormatConstraint extends FormatConstraintBase
     }
 
     /**
-     * Add a format validator
+     * Add a format validator.
      *
-     * @param string $format
+     * @param string                   $format
      * @param FormatValidatorInterface $formatValidator
      */
     public function addFormatValidator($format, FormatValidatorInterface $formatValidator)
