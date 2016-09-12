@@ -3,6 +3,7 @@
 namespace tests\Nicofuma\SwaggerBundle\Validator;
 
 use FR3D\SwaggerAssertions\SchemaManager;
+use JsonSchema\Constraints\Factory;
 use Nicofuma\SwaggerBundle\Validator\Validator;
 use tests\Nicofuma\SwaggerBundle\SwaggerTestCase;
 
@@ -28,7 +29,7 @@ class ValidatorTest extends SwaggerTestCase
 
         $request = $this->createMockRequest('GET', '/api/v1/missing', $this->getValidHeaders(), '', []);
 
-        $validator = new Validator($this->schemaManager, true);
+        $validator = new Validator(new Factory(), $this->schemaManager, true);
         $validator->validate($request);
     }
 
@@ -36,7 +37,7 @@ class ValidatorTest extends SwaggerTestCase
     {
         $request = $this->createMockRequest('GET', '/api/v1/missing', $this->getValidHeaders(), '', []);
 
-        $validator = new Validator($this->schemaManager, false);
+        $validator = new Validator(new Factory(), $this->schemaManager, false);
         $validator->validate($request);
 
         static::assertTrue(true);
@@ -46,7 +47,7 @@ class ValidatorTest extends SwaggerTestCase
     {
         $request = $this->createMockRequest('GET', '/api/v1/users', $this->getValidHeaders(), '', []);
 
-        $validator = new Validator($this->schemaManager, true);
+        $validator = new Validator(new Factory(), $this->schemaManager, true);
         $validator->validate($request);
 
         static::assertTrue(true);
@@ -59,7 +60,7 @@ class ValidatorTest extends SwaggerTestCase
 
         $request = $this->createMockRequest('GET', '/api/v1/users?count=bar', $this->getValidHeaders(), '', []);
 
-        $validator = new Validator($this->schemaManager, true);
+        $validator = new Validator(new Factory(), $this->schemaManager, true);
         $validator->validate($request);
     }
 }

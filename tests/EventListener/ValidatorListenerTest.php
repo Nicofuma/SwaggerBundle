@@ -88,9 +88,9 @@ EOF
             $violations = $e->getViolations();
 
             static::assertCount(2, $violations);
-            static::assertSame('name', $violations->get(0)->getPropertyPath());
+            static::assertSame('[name]', $violations->get(0)->getPropertyPath());
             static::assertSame('The property name is required', $violations->get(0)->getMessage());
-            static::assertSame('', $violations->get(1)->getPropertyPath());
+            static::assertSame('[]', $violations->get(1)->getPropertyPath());
             static::assertSame('Failed to match all schemas', $violations->get(1)->getMessage());
 
             throw $e;

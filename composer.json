@@ -16,7 +16,7 @@
     "symfony/event-dispatcher": "^2.3|^3.0",
     "symfony/http-foundation": "^2.4|^3.0",
     "symfony/validator": "^2.3|^3.0",
-    "fr3d/swagger-assertions": "dev-master"
+    "fr3d/swagger-assertions": "^0.7.0"
   },
   "require-dev": {
     "phpunit/phpunit": "^5.2",

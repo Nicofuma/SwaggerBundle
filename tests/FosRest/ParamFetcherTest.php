@@ -4,6 +4,7 @@ namespace tests\Nicofuma\SwaggerBundle\FosRest;
 
 use FOS\RestBundle\Request\ParamFetcherInterface;
 use FR3D\SwaggerAssertions\SchemaManager;
+use JsonSchema\Constraints\Factory;
 use Nicofuma\SwaggerBundle\Exception\NoValidatorException;
 use Nicofuma\SwaggerBundle\FosRest\ParamFetcher;
 use Nicofuma\SwaggerBundle\Validator\Validator;
@@ -38,6 +39,7 @@ class ParamFetcherTest extends SwaggerTestCase
         $request = new Request();
         $requestStack = $this->prophesize(RequestStack::class);
         $requestStack->getCurrentRequest()->willreturn($request);
+        $requestStack->getMasterRequest()->willreturn($request);
 
         $map = $this->prophesize(ValidatorMap::class);
         $map->getValidator($request)->will(function () {
@@ -108,8 +110,9 @@ class ParamFetcherTest extends SwaggerTestCase
         $request = $this->createMockRequest($method, $path, [], '', $query);
         $requestStack = $this->prophesize(RequestStack::class);
         $requestStack->getCurrentRequest()->willreturn($request);
+        $requestStack->getMasterRequest()->willreturn($request);
 
-        $validator = new Validator($this->schemaManager, true);
+        $validator = new Validator(new Factory(), $this->schemaManager, true);
         $map = $this->prophesize(ValidatorMap::class);
         $map->getValidator($request)->willReturn($validator);
 
