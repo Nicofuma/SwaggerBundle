@@ -41,8 +41,8 @@ class NicofumaSwaggerExtension extends Extension
 
             $validatorId = 'swagger.validator.'.$key;
             $validator = $container->setDefinition($validatorId, new DefinitionDecorator('swagger.validator'));
-            $validator->replaceArgument(0, new Reference($schemaManagerId));
-            $validator->replaceArgument(1, $definition['strict']);
+            $validator->replaceArgument(1, new Reference($schemaManagerId));
+            $validator->replaceArgument(2, $definition['strict']);
 
             $map[$validatorId] = $matcher;
         }
