@@ -40,7 +40,7 @@ services:
           - '@request_stack'
 
     swagger.json_schema.constraints.factory:
-        class: Nicofuma\SwaggerBundle\JsonSchema\Constraints\Factory
+        class: JsonSchema\Constraints\Factory
 
     # Override the JsonSchema's format constraint
     swagger.json_schema.constraints.format:
