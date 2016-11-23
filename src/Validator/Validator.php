@@ -51,6 +51,6 @@ class Validator
      */
     protected function getValidator()
     {
-        return new \JsonSchema\Validator($this->constraintsFactory);
+        return new \JsonSchema\Validator(\JsonSchema\Validator::CHECK_MODE_NORMAL, null, $this->constraintsFactory);
     }
 }
