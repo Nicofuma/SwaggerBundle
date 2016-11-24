@@ -2,7 +2,7 @@
 
 namespace Nicofuma\SwaggerBundle\JsonSchema\Constraints;
 
-use JsonSchema\Constraints\Factory;
+use JsonSchema\Constraints\Factory as BaseFactory;
 use JsonSchema\Constraints\FormatConstraint as FormatConstraintBase;
 use JsonSchema\Uri\UriRetriever;
 use Nicofuma\SwaggerBundle\Exception\FormatConstraintException;
@@ -13,7 +13,7 @@ class FormatConstraint extends FormatConstraintBase
     /** @var FormatValidatorInterface[] */
     private $formatMap = [];
 
-    public function __construct($checkMode, UriRetriever $uriRetriever, Factory $factory)
+    public function __construct($checkMode, UriRetriever $uriRetriever, BaseFactory $factory)
     {
         parent::__construct($checkMode, $uriRetriever, $factory);
 
