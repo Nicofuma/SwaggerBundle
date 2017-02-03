@@ -2,14 +2,14 @@
 
 namespace Nicofuma\SwaggerBundle\Tests\Behat\Context;
 
-use BootstrapBundle\Tests\Behat\Context\Traits\ClientContextTrait;
+use Behat\Mink\Driver\BrowserKitDriver;
+use Behat\Mink\Exception\UnsupportedDriverActionException;
 use FR3D\SwaggerAssertions\PhpUnit\SymfonyAssertsTrait;
 use Nicofuma\SwaggerBundle\Validator\ValidatorMap;
 use Sanpi\Behatch\Context\BaseContext;
 
 class SwaggerContext extends BaseContext
 {
-    use ClientContextTrait;
     use SymfonyAssertsTrait;
 
     /** @var ValidatorMap */
@@ -35,5 +35,39 @@ class SwaggerContext extends BaseContext
         $schemaManager = $this->map->getValidator($request)->getSchemaManager();
 
         $this->assertResponseMatch($response, $schemaManager, $request->getPathInfo(), $request->getMethod());
+    }
+
+    /**
+     * @return \Symfony\Component\BrowserKit\Client
+     *
+     * @throws UnsupportedDriverActionException
+     */
+    protected function getClient()
+    {
+        $driver = $this->getSession()->getDriver();
+
+        if (!$driver instanceof BrowserKitDriver) {
+            throw new UnsupportedDriverActionException('This step is only supported by the BrowserKitDriver, not the %s one', $driver);
+        }
+
+        return $driver->getClient();
+    }
+
+    /**
+     * Get the last response.
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    protected function getResponse()
+    {
+        return $this->getClient()->getResponse();
+    }
+
+    /**
+     * @return \Symfony\Component\HttpFoundation\Request
+     */
+    public function getRequest()
+    {
+        return $this->getClient()->getRequest();
     }
 }
