@@ -54,7 +54,7 @@ Configuration
 -------------
 
 ```yml
-swagger:
+nicofuma_swagger:
     definition:
         pattern: '/api/v1'
         swagger_file: swagger/swagger.json
@@ -70,7 +70,7 @@ Configuration reference
 
 ```yml
 # Default configuration for extension with alias: "swagger"
-swagger:
+nicofuma_swagger:
     definitions:
         -
             pattern:
@@ -98,7 +98,7 @@ Behat integration
 
 Add the following context in your behat.yml file
 ```
-        - SwaggerValidationBundle\Tests\Behat\Context\SwaggerContext: {map: '@swagger_validation.validator_map'}
+- Nicofuma\SwaggerBundle\Tests\Behat\Context\SwaggerContext: {map: '@swagger.validator_map'}
 ```
 
 Contributing
