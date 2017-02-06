@@ -81,7 +81,7 @@ class ParamFetcher implements ParamFetcherInterface
     /**
      * {@inheritdoc}
      */
-    public function all($strict = false)
+    public function all($strict = null)
     {
         if ($this->usingSwagger) {
             $parameters = [];
